@@ -11,20 +11,15 @@ class mySortAlgorithm:
     def insertSort(self):
         orderedTail = 0
         while orderedTail < self.length - 1:
-            tmpIndex = orderedTail + 1
-            value = self.arr[tmpIndex]
-            insertIndex = tmpIndex
-            for index in range(orderedTail):
-                if self.arr[index] > self.arr[tmpIndex]:
-                    insertIndex = index
+            insertIndex = orderedTail
+            value = self.arr[orderedTail + 1]
+            while insertIndex >= 0:
+                if self.arr[insertIndex] > value:
+                    self.arr[insertIndex + 1 ] = self.arr[insertIndex]
+                else:
+                    self.arr[insertIndex + 1 ] = value
                     break
-            if insertIndex != tmpIndex:
-                #Need insert
-                i = tmpIndex
-                while i > insertIndex:
-                    self.arr[i] = self.arr[i - 1]
-                    i = i - 1
-                self.arr[insertIndex] = value
+                insertIndex = insertIndex - 1
             orderedTail = orderedTail + 1
 
     def selectSort(self):

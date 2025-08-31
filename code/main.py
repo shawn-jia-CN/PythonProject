@@ -5,7 +5,7 @@ from lib.myErrorType import *
 
 
 def main():
-    test = myList(strIn="1,5,7,2,3,100, 2000")
+    test = myList(strIn="1,6,3, 5,7,2,3,100, 2000")
     test.printMyList()
     sortListTool = mySortAlgorithm(input=test)
     #sortListTool.insertSort()
