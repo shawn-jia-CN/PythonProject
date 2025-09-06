@@ -30,5 +30,80 @@ class mySortAlgorithm:
                 if self.arr[i] > self.arr[maxIndex]:
                     maxIndex = i
             self.swap(maxIndex, index - 1)
-            index  = index - 1
+            index  = index - 1    
+
+class sortTool:
+    def __init__(self):
+        pass
+
+    def sort(self, input):
+        t = mySortAlgorithm(input)
+        t.selectSort()
+
+
+class mergeSortTool:
+    def __init__(self):
+        pass
+
+    def merge(self, left ,right):
+        ans = []
+        leftIndex = 0
+        rightIndex = 0
+        leftLen = len(left)
+        rightLen = len(right)
+        while(leftIndex < leftLen or rightIndex < rightLen):
+            if leftIndex == leftLen:
+                ans.append(right[rightIndex])
+                rightIndex = rightIndex + 1
+            elif rightIndex == rightLen:
+                ans.append(left[leftIndex])
+                leftIndex = leftIndex + 1
+            else:
+                if left[leftIndex] < right[rightIndex]:
+                    ans.append(left[leftIndex])
+                    leftIndex = leftIndex + 1
+                else:
+                    ans.append(right[rightIndex])
+                    rightIndex = rightIndex + 1
+        return ans
+
+    def sort(self, input):
+        tmp = input.arr[: len(input)]
+        ans = self.doInternalSort(tmp)
+        for i in range(len(ans)):
+            input[i] = ans[i]
+
+    def doInternalSort(self, input):
+        if len(input) <= 1:
+            return input
+        mid = len(input) // 2
+        return self.merge(self.doInternalSort(input[: mid]),  self.doInternalSort(input[mid: len(input)]))
     
+
+
+
+class qSortTool:
+    def __init__(self):
+        pass
+
+    def sort(self, input):
+        tmp = input.arr[: len(input)]
+        ans = self.doInternalSort(tmp)
+        for i in range(len(ans)):
+            input[i] = ans[i]
+
+
+    def doInternalSort(self, input):
+        if len(input) <= 1:
+            return input
+        pivot = input[0]
+        left = []
+        right = []
+        index = 1
+        while index < len(input):
+            if input[index] < pivot:
+                left.append(input[index])
+            else:
+                right.append(input[index])
+            index = index + 1
+        return self.doInternalSort(left) + [pivot] + self.doInternalSort(right)
