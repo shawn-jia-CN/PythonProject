@@ -3,13 +3,14 @@ NoError = 0
 InvaildParameter = -1
 NoCapacity = -2
 NotFound = -3
-
+IsEmpty = -4
 
 ErrorMap = {
     NoError : "No Error",
     InvaildParameter : "Invaild Parameter",
     NoCapacity : "No capacity",
-    NotFound : "NotFound"
+    NotFound : "NotFound",
+    IsEmpty : "Is Empty"
 }
 
 class MyCustomError(Exception):
