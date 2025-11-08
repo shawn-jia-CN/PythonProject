@@ -31,7 +31,7 @@ class ArrayTree:
         return 2 * index + 2
     
     def parent(self, index):
-        return index // 2
+        return (index - 1 ) // 2
     
     def level_order(self):
         self.res = []
